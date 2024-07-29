@@ -1,0 +1,23 @@
+#docker-compose file
+version: '3'
+
+services:
+  # rabbitmq:
+  #   image: 'rabbitmq:3-management'
+  #   ports:
+  #     - '5672:5672'
+  #     - '15672:15672'
+  nestapp:
+    container_name: nestapp
+    image: docklerhubuser/nest-mongo:0.0.1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    environment:
+      - MONGO_ATLAS_USER=yazidihsan1
+      - MONGO_ATLAS_PASSWORD=z1uDv4bPAx0GUofV
+      - MONGO_ATLAS_DB=@cluster0.uvbx7ro.mongodb.net/
